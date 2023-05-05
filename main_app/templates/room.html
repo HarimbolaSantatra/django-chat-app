@@ -16,21 +16,16 @@
   <div class="message-row">
     <div class="message-time">00:44 AM</div>
     <div class="message-card">
-      <div class="message-name"> {{message.username}} </div>
+      <div class="message-name">{{message.username}}</div>
       <div class="message-box-container">
-        <div class="message-box {{message.class_name}}"> {{message.message}} </div>
+        <div class="message-box {{message.class_name}}">
+          {{message.message}}
+        </div>
       </div>
     </div>
   </div>
   {% endfor %}
-
 </div>
-
-{% comment %} 
-<textarea id="chat-log" cols="100" rows="10" readonly class="mb-2">
-    {{chat_message}}
-</textarea>
-{% endcomment %}
 
 <div id="input-block">
   <input id="chat-message-user" type="hidden" value="{{username}}" />
@@ -73,6 +68,11 @@
     }
   };
 
+  var currentTime = function () {
+    let current = new Date();
+    return current.toLocaleTimeString();
+  };
+
   document.querySelector("#chat-message-submit").onclick = function (e) {
     const userInputDom = document.querySelector("#chat-message-user");
     const username = userInputDom.value;
@@ -80,6 +80,33 @@
     const room_name = roomInputDom.value;
     const messageInputDom = document.querySelector("#chat-message-input");
     const message = messageInputDom.value;
+
+    const messageBlock = document.getElementById("message-block");
+    const messageRow = document.createElement("div");
+    messageRow.className = "message-row";
+
+    const messageTime = document.createElement("div");
+    messageTime.className = "message-time";
+    messageTime.textContent = currentTime();
+    const messageCard = document.createElement("div");
+    messageCard.className = "message-card";
+
+    const messageUsername = document.createElement("div");
+    messageUsername.className = "message-name";
+    messageUsername.textContent = username;
+    const messageBoxContainer = document.createElement("div");
+    messageBoxContainer.className = "message-box-container";
+
+    const messageBox = document.createElement("div");
+    messageBox.className = "message-box primary-message-box";
+    messageBox.textContent = message;
+
+    messageBoxContainer.appendChild(messageBox);
+    messageCard.appendChild(messageUsername);
+    messageCard.appendChild(messageBoxContainer);
+    messageRow.appendChild(messageTime);
+    messageRow.appendChild(messageCard);
+    messageBlock.appendChild(messageRow);
 
     chatSocket.send(
       JSON.stringify({
