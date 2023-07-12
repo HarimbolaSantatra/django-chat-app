@@ -8,6 +8,7 @@ This application requires the following dependencies:
 - Django
 - Channels & Daphne
 - MySQL database
+- redis server
 
 Clone this repository:
 
@@ -18,13 +19,17 @@ Install all the Python's dependencies:
 
 	python -m pip install -r requirements.txt
 
-Use the dump.sql_ file to upload the MySQL table inside your MySQL database.
+Activate redis and mysql server:
+
+	sudo systemctl start redis-server && systemctl start mysql
+
+Use the _dump.sql_ file to upload the MySQL table inside your MySQL database.
 
 	mysql -u <username> -p < dump.sql
 
 Alternatively, if you want a clean database, you can skip this step and let migration create the database for you, provided that you correctly set up your _setting.py_ database backend.
 
-Use the username/password: root/root to login to the application and to Django admin page. Feel free to add users.
+Use the default username/password: root/root to login to the application and to Django admin page. Then feel free to add users here.
 
 ## WebSocket
 WebSocket maintain a communication between session during a whole session, contrary to HTTP Request where one actor wait for a request before sending a response.
