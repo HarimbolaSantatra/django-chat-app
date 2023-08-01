@@ -21,13 +21,14 @@ Install all the Python's dependencies:
 
 Activate redis and mysql server:
 
-	sudo systemctl start redis-server && systemctl start mysql
+	sudo systemctl start redis-server mysql
 
 Use the _dump.sql_ file to upload the MySQL table inside your MySQL database.
 
 	mysql -u <username> -p < dump.sql
 
-Alternatively, if you want a clean database, you can skip this step and let migration create the database for you, provided that you correctly set up your _setting.py_ database backend.
+Alternatively, if you want a clean database, you can skip this step and let migration create the database for you. 
+__Do not forget to correctly set up your _setting.py_ database settings.__
 
 Use the default username/password: root/root to login to the application and to Django admin page. Then feel free to add users here.
 
