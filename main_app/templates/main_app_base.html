@@ -7,29 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>{% block title %} Base {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
 </head>
 
-{% block header %}
-{% endblock header %}
+<body class='container'>
 
-
-<body class='container py-2'>
-    <div class="container pt-2 pb-4 bg-white">
-        {% block content %}
-        {% endblock content %}
+    {% block header %}
+    <div id="header">
+        <img id="avatar" src="{% static 'img/p3.png' %}" alt="avatar"/>
+        <div id="username-header">{{username}}</div>
+        <a href="{% url 'logout' %}" class="btn red-btn">
+            Logout
+        </a>                
     </div>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock content %}
 
     {% block script %}
-        <script src="{% static 'jquery.js' %}"></script>
-        <script src="{% static 'popper.js' %}"></script>
-        <script src="{% static 'bootstrap.min.js' %}"></script>
-        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.dropdown-toggle').dropdown()
-            });
-        </script>
     {% endblock script %}
 </body>

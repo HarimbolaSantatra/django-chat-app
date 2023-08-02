@@ -7,7 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'style.css' %}" />
   </head>
-  <body id="login-container">
+  <body id="login-container" class="container">
     <h2>Log in to ChatApp</h2>
     <form id="login-form" action="{% url 'login' %}" method="post">
       {% csrf_token %}
@@ -17,6 +17,7 @@
         id="username-form"
         name="username"
         placeholder="username"
+        value="root"
       />
       <label id="password-toggle" for="password-input"></label>
       <input
@@ -25,8 +26,11 @@
         id="password-input"
         name="password"
         placeholder="password"
+        value="root"
       />
-      <input class="input btn blue-btn" type="submit" value="Submit" />
+      <input class="input blue-btn" type="submit" value="Submit" 
+        style="margin-top: 20px;" 
+      />
     </form>
   </body>
 </html>
