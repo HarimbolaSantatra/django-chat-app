@@ -75,6 +75,20 @@ a {
   text-align: center;
 }
 
+#room-name-input {
+  margin: 15px 0;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: bold;
+  width: 50%;
+  background-color: var(--less-black);
+  color: inherit;
+  border: none;
+}
+
+.room-option {
+}
+
 #input-block{
     margin-top: var(--row-gutter);
     margin-bottom: var(--row-gutter);

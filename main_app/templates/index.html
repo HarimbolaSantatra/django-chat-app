@@ -5,16 +5,16 @@
 
 {% block content %}
     <div class="row mb-2">
-        <label for="room-name-input" class="col-4 col-form-label">
+        <div id="">
             What chat room would you like to enter?
-        </label>
-        <select id="room-name-input" class="col-1 form-select" >
+        </div>
+        <select id="room-name-input" class="" >
             {% for room in rooms %}
-                <option value={{room.name}} > {{ room.name }} </option>
+                <option class="room-option" value={{room.name}} > {{ room.name }} </option>
             {% endfor %}
         </select>
     </div>
-    <input id="room-name-submit" class="btn btn-primary" type="button" value="Enter">
+    <input id="room-name-submit" class="btn blue-btn" type="button" value="Enter">
 
     <script>
         document.querySelector('#room-name-input').focus();
