@@ -2,25 +2,31 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
-</head>
-<body>
-    <div class="container-fluid">
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="username" class="form-label"> Username </label>
-              <input type="text" class="form-control" id="username" name="username">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="text" class="form-control" id="password" name="password">
-            </div>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-</body>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body id="login-container">
+    <h2>Log in to ChatApp</h2>
+    <form id="login-form" action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <input
+        type="text"
+        class="input text-input"
+        id="username-form"
+        name="username"
+        placeholder="username"
+      />
+      <label id="password-toggle" for="password-input"></label>
+      <input
+        type="text"
+        class="input text-input"
+        id="password-input"
+        name="password"
+        placeholder="password"
+      />
+      <input class="input btn blue-btn" type="submit" value="Submit" />
+    </form>
+  </body>
 </html>
