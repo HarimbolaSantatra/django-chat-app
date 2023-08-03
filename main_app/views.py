@@ -23,7 +23,7 @@ def room(request, room_name):
     chat_messages = []
     for chat in chats:
         isOwner = (chat.user.username == username)
-        class_name = "primary-message-box" if isOwner else "secondary-message-box"
+        class_name = "primary-message-row" if isOwner else "secondary-message-row"
         new_chat = { 
             "username":chat.user.username, 
             "message":chat.message,

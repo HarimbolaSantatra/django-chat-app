@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>{% block title %} Base {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body class='container'>
 
     {% block header %}
-    <div id="header">
+    <div class="header">
         <img id="avatar" src="{% static 'img/p3.png' %}" alt="avatar"/>
         <div id="username-header">{{username}}</div>
         <a href="{% url 'logout' %}" class="btn red-btn">
