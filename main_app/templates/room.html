@@ -91,29 +91,22 @@
 
     const messageBlock = document.getElementById("message-block");
     const messageRow = document.createElement("div");
-    messageRow.className = "message-row";
+    messageRow.className = "message-row primary-message-row";
 
-    const messageTime = document.createElement("div");
-    messageTime.className = "message-time";
-    messageTime.textContent = currentTime();
     const messageCard = document.createElement("div");
     messageCard.className = "message-card";
 
     const messageUsername = document.createElement("div");
     messageUsername.className = "message-name";
-    messageUsername.textContent = username;
-    const messageBoxContainer = document.createElement("div");
-    messageBoxContainer.className = "message-box-container";
+    messageUsername.textContent = username + " - " + currentTime();
 
     const messageBox = document.createElement("div");
-    messageBox.className = "message-box primary-message-box";
+    messageBox.className = "message-box";
     messageBox.textContent = message;
 
-    messageBoxContainer.appendChild(messageBox);
-    messageCard.appendChild(messageUsername);
-    messageCard.appendChild(messageBoxContainer);
-    messageRow.appendChild(messageTime);
     messageRow.appendChild(messageCard);
+    messageCard.appendChild(messageUsername);
+    messageCard.appendChild(messageBox);
     messageBlock.appendChild(messageRow);
 
     chatSocket.send(
