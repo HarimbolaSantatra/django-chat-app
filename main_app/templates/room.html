@@ -27,7 +27,7 @@
   {% for message in chat_message %}
     <div class="message-row {{message.class_name}}">
       <div class="message-card">
-        <div class="message-name">{{message.username}}</div>
+        <div class="message-name">{{message.username}} - {{message.date}}</div>
         <div class="message-box">
           {{message.message}}
         </div>

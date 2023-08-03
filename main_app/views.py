@@ -27,6 +27,7 @@ def room(request, room_name):
         new_chat = { 
             "username":chat.user.username, 
             "message":chat.message,
+            "date":chat.date,
             "class_name": class_name
             }
         chat_messages.append(new_chat)

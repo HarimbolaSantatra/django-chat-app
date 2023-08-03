@@ -12,3 +12,4 @@ class Chat(models.Model):
     message = models.CharField(max_length=100, default="")
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     room = models.ForeignKey(Room, on_delete=models.PROTECT)
+    date = models.DateTimeField(auto_now_add=True)
