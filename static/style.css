@@ -6,6 +6,7 @@
   --blue-2: #019AE4;
   --white-text: #dddddd;
   --less-black: #262626;
+  --login-text-bg: linear-gradient(90deg, rgba(137,25,245,1) 50%, rgba(1,154,228,1) 85%, rgba(60,177,255,1) 100%);
 }
 
 body {
@@ -39,7 +40,13 @@ h1, h2, h3 {
 }
 
 #login-container {
-  padding: 0 8%;
+  padding: 5% 8%;
+}
+
+#login-container > h2 > span {
+  background: var(--login-text-bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #login-form {
