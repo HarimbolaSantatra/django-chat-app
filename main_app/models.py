@@ -13,3 +13,9 @@ class Chat(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     room = models.ForeignKey(Room, on_delete=models.PROTECT)
     date = models.DateTimeField(auto_now_add=True)
+
+    def get_day(self):
+        return self.date.strftime("%b %d")
+
+    def get_time(self):
+        return self.date.strftime("%I:%M %p")

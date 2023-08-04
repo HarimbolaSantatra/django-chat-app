@@ -24,15 +24,20 @@
 </div>
 
 <div id="message-block">
-  {% for message in chat_message %}
-    <div class="message-row {{message.class_name}}">
-      <div class="message-card">
-        <div class="message-name">{{message.username}} - {{message.date}}</div>
-        <div class="message-box">
-          {{message.message}}
+  {% for daily_message in chat_per_day %}
+    <div class="message-day">{{daily_message.day}}</div>
+    {% for message_chat in daily_message.chats %}
+      <div class="message-row {{message_chat.class_name}}">
+        <div class="message-card">
+          <div class="message-name">
+            {{message_chat.username}} - {{message_chat.time}}
+          </div>
+          <div class="message-box">
+            {{message_chat.message}}
+          </div>
         </div>
       </div>
-    </div>
+    {% endfor %}
   {% endfor %}
 </div>
 

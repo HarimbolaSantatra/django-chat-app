@@ -124,6 +124,11 @@ h1, h2, h3 {
   fill: var(--red-hover);
 }
 
+.message-day {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 .message-row{
   display: flex;
   margin-top: 5px;
