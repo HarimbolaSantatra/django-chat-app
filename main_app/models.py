@@ -27,12 +27,17 @@ class Chat(models.Model):
         chat_per_day = []
         current_day = None
         current_hour = None
+        last_username = None  # use for hiding same consecutive username
         for chat in chats:
             isOwner = (chat.user.username == current_username)
             class_name = "primary-message-row" if isOwner else "secondary-message-row"
 
             # style_username: show username only if message owner is not current logged user
-            style_username = chat.user.username if not isOwner else ""
+            if isOwner or last_username == chat.user.username:
+                style_username = ""
+            else:
+                style_username = chat.user.username
+            last_username = chat.user.username
 
             new_chat = { 
                 "username":style_username, 
