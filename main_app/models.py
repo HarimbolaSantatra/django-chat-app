@@ -29,8 +29,12 @@ class Chat(models.Model):
         for chat in chats:
             isOwner = (chat.user.username == current_username)
             class_name = "primary-message-row" if isOwner else "secondary-message-row"
+
+            # style_username: show username only if message owner is not current logged user
+            style_username = chat.user.username if not isOwner else ""
+
             new_chat = { 
-                "username":chat.user.username, 
+                "username":style_username, 
                 "message":chat.message,
                 "time":chat.get_time(),
                 "class_name": class_name
