@@ -3,7 +3,6 @@
 {% block title %} {{room_name}} {% endblock %}
 
 {% block content %}
-
 <div id="message-header">
   <div>4 May</div>
   <div style="display: flex; align-items: center;">
@@ -23,20 +22,24 @@
   </div>
 </div>
 
+<!--  {{message_chat.time}} -->
 <div id="message-block">
   {% for daily_message in chat_per_day %}
     <div class="message-day">{{daily_message.day}}</div>
-    {% for message_chat in daily_message.chats %}
-      <div class="message-row {{message_chat.class_name}}">
-        <div class="message-card">
-          <div class="message-name">
-            {{message_chat.username}} - {{message_chat.time}}
-          </div>
-          <div class="message-box">
-            {{message_chat.message}}
+    {% for hourly_message in daily_message.per_hour %}
+      <div> {{hourly_message.hour}}</div>
+      {% for message_chat in hourly_message.chats %}
+        <div class="message-row {{message_chat.class_name}}">
+          <div class="message-card">
+            <div class="message-name">
+              {{message_chat.username}}
+            </div>
+            <div class="message-box">
+              {{message_chat.message}}
+            </div>
           </div>
         </div>
-      </div>
+      {% endfor %}
     {% endfor %}
   {% endfor %}
 </div>

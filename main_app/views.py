@@ -24,6 +24,6 @@ def room(request, room_name):
     context = {
         'username': username,
         'room_name': room_name,
-        'chat_per_day': Chat.sort_chats_per_day(chats, username)
+        'chat_per_day': Chat.sort_chats_per_day_per_hour(chats, username),
     }
     return render(request, "room.html", context)

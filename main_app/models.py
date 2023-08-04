@@ -23,9 +23,10 @@ class Chat(models.Model):
 
 
     @staticmethod
-    def sort_chats_per_day(chats, current_username):
+    def sort_chats_per_day_per_hour(chats, current_username):
         chat_per_day = []
         current_day = None
+        current_hour = None
         for chat in chats:
             isOwner = (chat.user.username == current_username)
             class_name = "primary-message-row" if isOwner else "secondary-message-row"
@@ -43,8 +44,14 @@ class Chat(models.Model):
             # Sort chat messages per day
             if current_day == None or current_day != chat.get_day():
                 current_day = chat.get_day()
-                chat_per_day.append({"day": current_day, "chats": [new_chat]})
+                chat_per_day.append({"day": current_day, "per_hour": []})
+
+            # Sort messages per hour
+            if current_hour == None or current_hour != chat.get_time():
+                current_hour = chat.get_time()
+                chat_per_day[-1]['per_hour'].append({"hour": current_hour, "chats": [new_chat]})
             else:
-                chat_per_day[-1]["chats"].append(new_chat)
+                chat_per_day[-1]['per_hour'][-1]["chats"].append(new_chat)
+
 
         return chat_per_day
