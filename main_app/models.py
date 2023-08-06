@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class Room(models.Model):
@@ -18,8 +18,11 @@ class Chat(models.Model):
     def get_day(self):
         return self.date.strftime("%b %d")
 
-    def get_time(self):
-        return self.date.strftime("%I:%M %p")
+    def get_time(self, tz=0):
+        # tz: time delta for a time zone
+        delta = timedelta(hours=tz)
+        f_time = self.date + delta
+        return f_time.strftime("%I:%M %p")
 
 
     @staticmethod
@@ -29,6 +32,9 @@ class Chat(models.Model):
         current_hour = None
         last_username = None  # use for hiding same consecutive username
         for chat in chats:
+
+            mdg_time = chat.get_time(tz=3)  # Madagascar time zone is UTC+3
+
             isOwner = (chat.user.username == current_username)
             class_name = "primary-message-row" if isOwner else "secondary-message-row"
 
@@ -42,7 +48,7 @@ class Chat(models.Model):
             new_chat = { 
                 "username":style_username, 
                 "message":chat.message,
-                "time":chat.get_time(),
+                "time":mdg_time,
                 "class_name": class_name
                 }
 
@@ -52,8 +58,8 @@ class Chat(models.Model):
                 chat_per_day.append({"day": current_day, "per_hour": []})
 
             # Sort messages per hour
-            if current_hour == None or current_hour != chat.get_time():
-                current_hour = chat.get_time()
+            if current_hour == None or current_hour != mdg_time:
+                current_hour = mdg_time
                 chat_per_day[-1]['per_hour'].append({"hour": current_hour, "chats": [new_chat]})
             else:
                 chat_per_day[-1]['per_hour'][-1]["chats"].append(new_chat)
