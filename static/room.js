@@ -23,6 +23,6 @@ document.querySelector("#chat-message-input").onkeyup = function (e) {
 };
 
 document.querySelector("#chat-message-submit").onclick = function(e) { 
-  addMoreMessage(chatSocket);
+  addMessageToDb(chatSocket);
 }
 
