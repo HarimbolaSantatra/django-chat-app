@@ -20,8 +20,8 @@ loadingBtn.addEventListener('click', () => {
 })
 
 // On document ready, make first AJAX request to load the first page
-// document.addEventListener("DOMContentLoaded", function() {
-// 	const room_name = document.querySelector("#chat-message-room").value;
-// 	loadMessage(room_name);
-// 	console.log("DOMContentLoaded");
-// });
+document.addEventListener("DOMContentLoaded", function() {
+	const room_name = document.querySelector("#chat-message-room").value;
+	loadMessage(room_name);
+	console.log("DOMContentLoaded");
+});
