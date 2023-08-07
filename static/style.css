@@ -4,6 +4,7 @@
   --red-hover: #ff7777;
   --magenta: #8919f5;
   --blue-2: #019AE4;
+  --cyan: #01dbc5;
   --white-text: #dddddd;
   --less-black: #262626;
   --login-text-bg: linear-gradient(90deg, rgba(137,25,245,1) 50%, rgba(1,154,228,1) 85%, rgba(60,177,255,1) 100%);
@@ -72,22 +73,25 @@ h1, h2, h3 {
   border-radius: 10px;
   font-size: inherit;
   padding: 13px 25px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+
 }
 
 .red-btn {
   background-color: var(--red);
   color: white;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
 }
 
 .blue-btn {
   background-color: var(--blue);
   color: white;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
+}
+
+.cyan-btn {
+  background-color: var(--cyan);
+  color: white;
 }
 
 

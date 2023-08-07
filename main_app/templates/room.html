@@ -23,6 +23,7 @@
 </div>
 
 <!--  {{message_chat.time}} -->
+<button id='load-more-btn' class='btn cyan-btn'> Load More </button>
 <div id="message-block">
   {% for daily_message in chat_per_day %}
     <div class="message-day">{{daily_message.day}}</div>
@@ -59,6 +60,8 @@
 
 {{ room_name|json_script:"room-name" }}
 
+<script src="{% static 'func.js' %}"></script>
 <script src="{% static 'room.js' %}"></script>
+<script src="{% static 'ajax-message.js' %}"></script>
 
 {% endblock %}

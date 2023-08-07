@@ -28,6 +28,49 @@ class Chat(models.Model):
 
     @staticmethod
     def sort_chats_per_day_per_hour(chats, current_username):
+        """
+        Return a good representation of chat objects
+
+        Parameters:
+        -----------
+        chats: list
+            list of Chat objects
+        current_username: str
+            current username
+
+        Return:
+        -----------
+        chat_per_day: complex nested list of dictionary, in format:
+            [
+                { 
+                    "day" : "Month 07",
+                    "per_hour" : [
+                        { 
+                            "hour": "14:08 PM",
+                            "chats": [
+                                { 
+                                    "username": "my_username", 
+                                    "message": <Chat.message>,
+                                    "time": "14:08 PM",
+                                    "class_name": "<primary|secondary>-message-row"
+                                },
+                                {
+                                    ...    
+                                }
+                            ]
+                        },
+                        {
+                            ...
+                        }
+                    ]
+                },
+                {
+                    ...
+                }
+            ]
+
+        """
+        
         chat_per_day = []
         current_day = None
         current_hour = None
@@ -69,14 +112,22 @@ class Chat(models.Model):
         return chat_per_day
 
     @staticmethod
-    def get_samples(chats, n=10):
+    def get_paginated_samples(chats, n=10):
         """
         Method used as a pagination system.
+
         Parameters:
+        -----------
         chats: list
             list of Chat objects
         n: integer
             number of sample for each page
+
+        Return:
+        2d list: [[...], ...]
+            list contains messages for each pagination
+        -----------
+
         """
         pg = Paginator(chats, n)
         samples = []
@@ -86,3 +137,4 @@ class Chat(models.Model):
                 samples[-1].append(chat)
 
         return samples
+            
