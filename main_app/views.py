@@ -24,13 +24,11 @@ def load_messages(request, room_name):
 
     MESSAGE_PER_PAGE = 4
 
-    # try:
-    #     ci = request.session['current_index']
-    # except KeyError:
-    #     request.session['current_index'] = 0
-    #     ci = 0
-
-    ci = request.session['current_index']
+    try:
+        ci = request.session['current_index']
+    except KeyError:
+        request.session['current_index'] = 0
+        ci = 0
 
     username = request.session['username']
     current_room = Room.objects.get(name=room_name)
