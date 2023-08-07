@@ -20,10 +20,11 @@ def room(request, room_name):
     username = request.session['username']
     current_room = Room.objects.get(name=room_name)
     chats = Chat.objects.filter(room=current_room)
+    paginated_chats = Chat.get_samples(chats, 5)
 
     context = {
         'username': username,
         'room_name': room_name,
-        'chat_per_day': Chat.sort_chats_per_day_per_hour(chats, username),
+        'chat_per_day': Chat.sort_chats_per_day_per_hour(paginated_chats[-1], username),
     }
     return render(request, "room.html", context)
