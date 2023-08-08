@@ -45,6 +45,8 @@ def load_messages(request, room_name):
         'username': username,
         'room_name': room_name,
         'chat_per_day': Chat.sort_chats_per_day_per_hour(chats, username),
+        
+        # just for debugging and knowing the request status
         'ci': ci,
         'session_index': request.session['current_index'],
     }

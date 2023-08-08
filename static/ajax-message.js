@@ -4,7 +4,6 @@ function loadMessage(roomName){
 	xhr.setRequestHeader("Content-Type", "application/json");
 	xhr.responseType = 'json';
 	xhr.send();
-	console.log("Lasa ny request");
 	xhr.onload = function(){
 		if(xhr.status === 200) {
 			addResponseToUI(xhr.response);
@@ -23,5 +22,4 @@ loadingBtn.addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", function() {
 	const room_name = document.querySelector("#chat-message-room").value;
 	loadMessage(room_name);
-	console.log("DOMContentLoaded");
 });

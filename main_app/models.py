@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator
 
 from datetime import datetime, timedelta
 
@@ -110,31 +109,3 @@ class Chat(models.Model):
 
 
         return chat_per_day
-
-    @staticmethod
-    def get_paginated_samples(chats, n=10):
-        """
-        Method used as a pagination system.
-
-        Parameters:
-        -----------
-        chats: list
-            list of Chat objects
-        n: integer
-            number of sample for each page
-
-        Return:
-        2d list: [[...], ...]
-            list contains messages for each pagination
-        -----------
-
-        """
-        pg = Paginator(chats, n)
-        samples = []
-        for p in pg.page_range:
-            samples.append([])
-            for chat in pg.page(p).object_list:
-                samples[-1].append(chat)
-
-        return samples
-            
