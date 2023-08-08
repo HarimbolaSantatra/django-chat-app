@@ -1,6 +1,6 @@
 function loadMessage(roomName){
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', `http://localhost:8000/chat/load/${roomName}`, true);
+	xhr.open('GET', `http://${window.location.host}/chat/load/${roomName}`, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
 	xhr.responseType = 'json';
 	xhr.send();
