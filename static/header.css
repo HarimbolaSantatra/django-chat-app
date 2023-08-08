@@ -7,11 +7,10 @@
 
 #user-header {
 	display: flex;
-	align-items: stretch;
 	gap: 20px;
 }
 
-#user-header > div {
+.header-col-flex{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;

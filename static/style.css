@@ -1,7 +1,7 @@
 :root {
   --blue: #3cb1ff;
   --red: #ff5e5e;
-  --red-hover: #ff7777;
+  --red-hover: #ee1919;
   --magenta: #8919f5;
   --blue-2: #019AE4;
   --cyan: #01dbc5;
@@ -126,12 +126,12 @@ h1, h2, h3 {
   border-top: 1px solid black;
 }
 
-#exit-icon {
+.header-svg {
   width: 50px;
   fill: var(--red);
 }
 
-#exit-icon:hover {
+.header-svg :hover {
   fill: var(--red-hover);
 }
 
