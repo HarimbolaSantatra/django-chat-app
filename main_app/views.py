@@ -11,7 +11,8 @@ def index(request):
     rooms = Room.objects.all()
     context = {
         'username': request.session['username'],
-        'rooms': rooms
+        'rooms': rooms,
+        'room_name': '',
     }
     return render(request, "index.html", context=context)
 
