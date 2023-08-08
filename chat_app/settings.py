@@ -17,7 +17,8 @@ SECRET_KEY = 'v)m1u3+x#e7s)jgvtw*5vt$!+^1+-!qgw!0u0&ewvlq881a5ky'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Allow *.vercel.app subdomain
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']
 
 
 # Application definition
@@ -69,16 +70,8 @@ WSGI_APPLICATION = 'chat_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_chat',
-        'USER': 'santatra',
-        'PASSWORD': 'santatra',
-        'HOST':  'localhost',
-        'PORT': '3306',
-    }
-}
+# get rid of database configuration
+DATABASES = {}
 
 
 # Password validation
