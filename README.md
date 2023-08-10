@@ -7,7 +7,7 @@ This is a chat application made with Django.
 This application requires the following dependencies:
 - Django
 - Channels & Daphne
-- MySQL database
+- PostgreSQL database
 - redis server
 
 Clone this repository:
@@ -21,23 +21,37 @@ Install all the Python's dependencies:
 
 Activate redis and mysql server:
 
-	sudo systemctl start redis-server mysql
+	sudo systemctl start redis-server postgresql
 
-Use the _dump.sql_ file to upload the MySQL table inside your MySQL database.
+Create the postgresql database:
 
-	mysql -u <username> -p < dump.sql
+	$ psql -U <username> -d django_chat
+	#CREATE DATABASE django_chat;
 
-Alternatively, if you want a clean database, you can skip this step and let migration create the database for you. 
+Use the _psql-dump.sql_ file to upload the table inside the database.
+
+	psql django_chat < psql-dump.sql
+
+Alternatively, if you want a clean database, you can skip the last step and let migration create the database for you. 
+
 __Do not forget to correctly set up your _setting.py_ database settings.__
 
-Use the default username/password: root/root to login to the application and to Django admin page. Then feel free to add users here.
+### User
+The login system uses traditional Django authentication. TO add user, add Django superuser.
 
-## WebSocket
-WebSocket maintain a communication between session during a whole session, contrary to HTTP Request where one actor wait for a request before sending a response.
+	python manage.py createsuperuser
+
+## Branch
+- master
+- stable: use MySQL and no Vercel config files
 
 ## Resources
 - [Django Documentation][1]
 - A chat tutorial:  https://www.honeybadger.io/blog/django-channels-websockets-chat/
+
+### WebSocket
+WebSocket maintain a communication between session during a whole session, contrary to HTTP Request where one actor wait for a request before sending a response.
+- [WebSocket API][5]
 
 ### Channels tutorial
 - [Channels documentation][2]
@@ -53,3 +67,4 @@ And again, Thanks for visiting !
 [2]: https://channels.readthedocs.io/en/stable/tutorial/index.html
 [3]: https://channels.readthedocs.io/en/stable/introduction.html
 [4]: https://channels.readthedocs.io/en/stable/topics/consumers.html 
+[5]: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications 
