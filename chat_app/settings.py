@@ -74,12 +74,12 @@ WSGI_APPLICATION = 'chat_app.wsgi.application'
 # get rid of database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_chat',
                 'USER': 'santatra',
                 'PASSWORD': 'santatra',
                 'HOST':  'localhost',
-                'PORT': '3306',
+                'PORT': '5432',
     }
 }
 
