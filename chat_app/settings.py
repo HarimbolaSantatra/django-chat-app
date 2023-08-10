@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # To handle the mysqlclient error: _mysql is not defined
 import pymysql
@@ -19,7 +20,7 @@ SECRET_KEY = 'v)m1u3+x#e7s)jgvtw*5vt$!+^1+-!qgw!0u0&ewvlq881a5ky'
 DEBUG = True
 
 # Allow *.vercel.app subdomain
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -124,6 +125,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Daphne root routing configuration
 ASGI_APPLICATION = "chat_app.asgi.application"
