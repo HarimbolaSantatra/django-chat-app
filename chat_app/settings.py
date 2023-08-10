@@ -2,6 +2,7 @@ from pathlib import Path
 
 # To handle the mysqlclient error: _mysql is not defined
 import pymysql
+pymysql.version_info = (2, 2, 0, "final", 0)
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -71,7 +72,16 @@ WSGI_APPLICATION = 'chat_app.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # get rid of database configuration
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_chat',
+                'USER': 'santatra',
+                'PASSWORD': 'santatra',
+                'HOST':  'localhost',
+                'PORT': '3306',
+    }
+}
 
 
 # Password validation
