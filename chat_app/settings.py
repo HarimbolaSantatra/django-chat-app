@@ -1,6 +1,10 @@
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 # To handle the mysqlclient error: _mysql is not defined
 import pymysql
 pymysql.version_info = (2, 2, 0, "final", 0)
@@ -76,11 +80,11 @@ WSGI_APPLICATION = 'chat_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_chat',
-                'USER': 'santatra',
-                'PASSWORD': 'santatra',
-                'HOST':  'localhost',
-                'PORT': '5432',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
     }
 }
 
