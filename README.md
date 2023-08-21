@@ -1,13 +1,20 @@
 # Chat Application
-
 ## About 
 This is a chat application made with Django.
+
+## Branch
+There's three branches:
+- stable/mysql: use mysql database
+- stable/psql: use postgresql
+- master: deployment on vercel
+
+If you want to test it yourself, it's better to use the stable/\* branch. (e.g: stable/psql if you use postgresql as a database)
 
 ## Installation
 This application requires the following dependencies:
 - Django
 - Channels & Daphne
-- PostgreSQL database
+- PostgreSQL or MySQL database
 - redis server
 
 Clone this repository:
@@ -32,6 +39,10 @@ Use the _psql-dump.sql_ file to upload the table inside the database.
 
 	psql django_chat < psql-dump.sql
 
+or the MySQL:
+    
+    $mysqldump -u <username> -d <database> < dump.sql
+
 Alternatively, if you want a clean database, you can skip the last step and let migration create the database for you. 
 
 __Do not forget to correctly set up your _setting.py_ database settings.__
@@ -40,10 +51,6 @@ __Do not forget to correctly set up your _setting.py_ database settings.__
 The login system uses traditional Django authentication. TO add user, add Django superuser.
 
 	python manage.py createsuperuser
-
-## Branch
-- master
-- stable: use MySQL and no Vercel config files
 
 ## Resources
 - [Django Documentation][1]
@@ -58,6 +65,9 @@ WebSocket maintain a communication between session during a whole session, contr
 - [Quick introduction][3]: Channels Documentation
 - [Consumer][4]
 
+## Version
+If you want an easier, less complex version, I made one [here][6].
+
 ## Feedback and Issues
 Feel free to raise issues or to provide any feeback.
 
@@ -68,3 +78,4 @@ And again, Thanks for visiting !
 [3]: https://channels.readthedocs.io/en/stable/introduction.html
 [4]: https://channels.readthedocs.io/en/stable/topics/consumers.html 
 [5]: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications 
+[6]: https://github.com/HarimbolaSantatra/django-group-chat
